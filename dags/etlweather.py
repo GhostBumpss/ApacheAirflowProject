@@ -54,7 +54,7 @@ with DAG(dag_id='weather_etl_pipeline', default_args=default_args, schedule='@da
         cursor = conn.cursor()
 
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS weather_data (
+        CREATE TABLE IF NOT EXISTS AirflowProject1.weather_data (
             latitude FLOAT,
             longitude FLOAT,
             temperature FLOAT,
@@ -66,7 +66,7 @@ with DAG(dag_id='weather_etl_pipeline', default_args=default_args, schedule='@da
         """)
 
         cursor.execute("""
-        INSERT INTO weather_data(latitude, longitude, temperature, windspeed, winddirection, weathercode)
+        INSERT INTO AirflowProject1.weather_data(latitude, longitude, temperature, windspeed, winddirection, weathercode)
         VALUES(%s, %s, %s, %s, %s, %s)
         """, (
             transformed_data['latitude'],
