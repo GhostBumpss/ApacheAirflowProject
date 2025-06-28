@@ -31,7 +31,7 @@ with DAG(dag_id='weather_etl_pipeline', default_args=default_args, schedule='@da
             print("I am printing the response", response.json())
             return response.json()
         except Exception as e:
-            raise ValueError(f"Failed to fetch weather data due to {e} - Status Code - {response.status_code}")
+            raise ValueError(f"Failed to fetch weather data due to {e}")
     
     @task()
     def transform_weather_data(weather_data):
